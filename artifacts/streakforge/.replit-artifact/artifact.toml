@@ -1,0 +1,24 @@
+kind = "mobile"
+previewPath = "/"
+title = "StreakForge"
+description = "A mobile DSA and development progress tracker for college students with daily check-ins, streaks, focus sessions, alarms, and local reminders."
+version = "1.0.0"
+id = "artifacts/streakforge"
+router = "expo-domain"
+
+[[services]]
+name = "expo"
+ensurePreviewReachable = "/status"
+paths = [ "/" ]
+localPort = 21748
+
+[services.development]
+run = "pnpm --filter @workspace/streakforge run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/streakforge", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/streakforge", "run", "serve" ]
+
+[services.env]
+PORT = "21748"
+BASE_PATH = "/"
